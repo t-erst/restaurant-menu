@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useState } from 'react';
+import axios from 'axios';
 import { MenuItem, HomeProps } from '@/shared/types';
 import Categories from '@/components/Categories';
 import Dishes from '@/components/Dishes';
@@ -28,9 +28,13 @@ export default function Home({ menuItems }: HomeProps) {
 }
 
 export async function getStaticProps() {
-  const response = await axios.get(API_URL, REQUEST_PARAMS);
-  const menuItems: MenuItem[] = response.data.desc;
-  return {
-    props: { menuItems },
-  };
+  try {
+    const response = await axios.get(API_URL, REQUEST_PARAMS);
+    const menuItems: MenuItem[] = response.data.desc;
+    return {
+      props: { menuItems },
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }
