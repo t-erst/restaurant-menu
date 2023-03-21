@@ -1,6 +1,6 @@
 # Restaurant Menu App
 
-This is a simple web application, that demonstrates a list of dishes, fetched from a server. Here is a link to live demo: https://vercel.com/t-erst/restaurant-app
+This is a simple web application, that demonstrates a list of dishes, fetched from a server. Here is a link to live demo: https://restaurant-app-hazel.vercel.app/
 
 
 ## Running the game
