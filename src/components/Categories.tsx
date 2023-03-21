@@ -1,28 +1,24 @@
 import Button from '@mui/material/Button';
+import { CategoriesData } from '@/shared/types';
 
-interface Categories {
-    data: {
-        categories: string[];
-        selectedCategory: string;
-        setSelectedCategory: (item: string) => void
-    }
-}
+const Categories = ({
+  data: { categories, selectedCategory, setSelectedCategory },
+}: CategoriesData) => {
+  return (
+    <header className="flex row flex-wrap mx-8 mt-8">
+      {categories.map((category) => (
+        <Button
+          key={category}
+          variant="text"
+          onClick={() => setSelectedCategory(category)}
+          color="inherit"
+          className={selectedCategory === category ? 'bg-sky-100' : ''}
+        >
+          {category}
+        </Button>
+      ))}
+    </header>
+  );
+};
 
-const Categories = ({ data: { categories, selectedCategory, setSelectedCategory } }: Categories) => {
-    return (
-        <header className='flex row flex-wrap mx-8 mt-8'>
-            {categories.map((item) =>
-                <Button
-                    key={item}
-                    variant='text'
-                    onClick={() => setSelectedCategory(item)}
-                    className={selectedCategory.includes(item) ? 'bg-sky-100' : ''}
-                >
-                    {item}
-                </Button>
-            )}
-        </header>
-    )
-}
-
-export default Categories
+export default Categories;
