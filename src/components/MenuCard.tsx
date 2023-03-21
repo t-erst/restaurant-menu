@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import PriceLevels from './PriceLevels';
+import CardAction from './CardAction';
 
 export default function MenuCard({
   menuCard: {
@@ -19,14 +20,16 @@ export default function MenuCard({
   },
 }: MenuCardData) {
   return (
-    <Card sx={{ maxWidth: 345, minWidth: 300, margin: 1 }}>
+    <Card
+      sx={{ maxWidth: 345, minWidth: 300, margin: 1, position: 'relative' }}
+    >
       <Image
         alt={name}
         src={`${UPLOADS_URL}${image ? image : categoryImage}`}
         height="138"
         width="345"
       />
-      <CardContent>
+      <CardContent sx={{ marginBottom: 4 }}>
         <Typography variant="h5">{name}</Typography>
         <Typography variant="h6">
           {itemPrice !== '0' ? `$${Number(itemPrice) / 100}` : 'for free'}
@@ -39,11 +42,7 @@ export default function MenuCard({
         </Typography>
         {priceLevels && <PriceLevels priceLevels={priceLevels} />}
       </CardContent>
-      {/* <CardActions>
-                <Button size="small" color="primary">
-                    Add to cart
-                </Button>
-            </CardActions> */}
+      <CardAction />
     </Card>
   );
 }
